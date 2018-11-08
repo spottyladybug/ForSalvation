@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.12 on 2018-11-04 14:44:01.
+ * Generated for Laravel 5.7.12 on 2018-11-08 09:26:54.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13617,6 +13617,193 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Yandex\Geocode\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class YandexGeocodeFacade {
+        
+        /**
+         * Load response
+         * 
+         * Загрузка ответа
+         *
+         * @param array $options Curl options
+         * @return $this 
+         * @throws Exception
+         * @throws Exception\CurlError
+         * @throws Exception\ServerError
+         * @static 
+         */ 
+        public static function load($options = array())
+        {
+            return \Yandex\Geocode\Api::load($options);
+        }
+        
+        /**
+         * Get response
+         * 
+         * Получение ответа
+         *
+         * @return \Response 
+         * @static 
+         */ 
+        public static function getResponse()
+        {
+            return \Yandex\Geocode\Api::getResponse();
+        }
+        
+        /**
+         * Clear filters geocoding
+         * 
+         * Очистка фильтров гео-кодирования
+         *
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function clear()
+        {
+            return \Yandex\Geocode\Api::clear();
+        }
+        
+        /**
+         * Geocoding by cordinates
+         * 
+         * Гео-кодирование по координатам
+         *
+         * @see http://api.yandex.ru/maps/doc/geocoder/desc/concepts/input_params.xml#geocode-format
+         * @param FLOAT $longitude Долгота в градусах
+         * @param FLOAT $latitude Широта в градусах
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setPoint($longitude, $latitude)
+        {
+            return \Yandex\Geocode\Api::setPoint($longitude, $latitude);
+        }
+        
+        /**
+         * Geographical region search object
+         * 
+         * Географическая область поиска объекта
+         *
+         * @param FLOAT $lengthLng Разница между максимальной и минимальной долготой в градусах
+         * @param FLOAT $lengthLat Разница между максимальной и минимальной широтой в градусах
+         * @param NULL|FLOAT $longitude Долгота в градусах
+         * @param NULL|FLOAT $latitude Широта в градусах
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setArea($lengthLng, $lengthLat, $longitude = null, $latitude = null)
+        {
+            return \Yandex\Geocode\Api::setArea($lengthLng, $lengthLat, $longitude, $latitude);
+        }
+        
+        /**
+         * Allow limit search objects by regions, given self::setArea()
+         * 
+         * Позволяет ограничить поиск объектов областью, заданной self::setArea()
+         *
+         * @param BOOLEAN $areaLimit
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function useAreaLimit($areaLimit)
+        {
+            return \Yandex\Geocode\Api::useAreaLimit($areaLimit);
+        }
+        
+        /**
+         * Geocoding by query (address/coordinates)
+         * 
+         * Гео-кодирование по запросу (адрес/координаты)
+         *
+         * @param STRING $query
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setQuery($query)
+        {
+            return \Yandex\Geocode\Api::setQuery($query);
+        }
+        
+        /**
+         * View toponyms (only for reverse geocoding)
+         * 
+         * Вид топонима (только для обратного геокодирования)
+         *
+         * @param STRING $kind
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setKind($kind)
+        {
+            return \Yandex\Geocode\Api::setKind($kind);
+        }
+        
+        /**
+         * Maximum amount return objects (default 10)
+         * 
+         * Максимальное количество возвращаемых объектов (по-умолчанию 10)
+         *
+         * @param INTEGER $limit
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setLimit($limit)
+        {
+            return \Yandex\Geocode\Api::setLimit($limit);
+        }
+        
+        /**
+         * Amount objects in response (start with first), which is necessary skip
+         * 
+         * Количество объектов в ответе (начиная с первого), которое необходимо пропустить
+         *
+         * @param INTEGER $offset
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setOffset($offset = 0)
+        {
+            return \Yandex\Geocode\Api::setOffset($offset);
+        }
+        
+        /**
+         * Preferred language description objects
+         * 
+         * Предпочитаемый язык описания объектов
+         *
+         * @param STRING $lang
+         * @return OBJECT 
+         * @static 
+         */ 
+        public static function setLang($language = '')
+        {
+            return \Yandex\Geocode\Api::setLang($language);
+        }
+        
+        /**
+         * Key api Yandex.Maps
+         * 
+         * Ключ API Яндекс.Карт
+         *
+         * @see http://api.yandex.ru/maps/form.xml
+         * @param string $token
+         * @return self 
+         * @static 
+         */ 
+        public static function setToken()
+        {
+            return \Yandex\Geocode\Api::setToken();
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -15989,6 +16176,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class YaGeo extends \Yandex\Geocode\Facades\YandexGeocodeFacade {}
  
 }
 
