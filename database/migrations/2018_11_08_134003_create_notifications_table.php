@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePromptsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePromptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prompts', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('prompt');
-            $table->boolean('general_mailing');
-            $table->json('blood_type');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->text('notification');
         });
     }
 
@@ -30,6 +26,6 @@ class CreatePromptsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prompts');
+        Schema::dropIfExists('notifications');
     }
 }
