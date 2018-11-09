@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/donor', 'DoctorController', [
+    'except' => ['edit', 'show']
+]);
+
+// OAuth Routes
+Route::get('login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
+Route::get('callback', 'Auth\LoginController@handleProviderCallback')->name('callback');

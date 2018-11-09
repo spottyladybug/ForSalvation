@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BloodType;
+use App\Models\Blood;
 use Illuminate\Http\Request;
 
-class BloodTypeController extends Controller
+class BloodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class BloodTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BloodType  $bloodType
+     * @param  \App\Models\Blood  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function show(BloodType $bloodType)
+    public function show(Blood $bloodType)
     {
         //
     }
@@ -52,10 +52,10 @@ class BloodTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BloodType  $bloodType
+     * @param  \App\Models\Blood  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function edit(BloodType $bloodType)
+    public function edit(Blood $bloodType)
     {
         //
     }
@@ -64,10 +64,10 @@ class BloodTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BloodType  $bloodType
+     * @param  \App\Models\Blood  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BloodType $bloodType)
+    public function update(Request $request, Blood $bloodType)
     {
         //
     }
@@ -75,10 +75,10 @@ class BloodTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BloodType  $bloodType
+     * @param  \App\Models\Blood  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BloodType $bloodType)
+    public function destroy(Blood $bloodType)
     {
         //
     }

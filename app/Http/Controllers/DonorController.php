@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Donor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DonorController extends Controller
 {
@@ -35,7 +36,17 @@ class DonorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $donor = new Donor();
+        $donor->id = Auth::id();
+        $donor->first_name = $request->name;
+        $donor->last_name = $request->last_name;
+        $donor->patronymic = $request->patronymic;
+        $donor->phone_number = $request->phone_number;
+        $donor->checkup = false;
+        $donor->blood_type = $request->blood_type;
+        $donor->save();
+
+        return response($donor->jsonSerialize(), Response::HTTP_CREATED);
     }
 
     /**

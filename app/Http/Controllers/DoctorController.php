@@ -35,7 +35,13 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doctor = new Doctor();
+        $doctor->id = \Auth::id();
+        $doctor->id_hospital = $request->id_hospital;
+        $doctor->position = $request->position;
+        $doctor->save();
+
+        return response($doctor->jsonSerialize(), Response::HTTP_CREATED);
     }
 
     /**
