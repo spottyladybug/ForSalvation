@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -48,7 +49,30 @@ class LoginController extends Controller
     {
         if( request( 'code' ) ) {
             $vkuser = Socialite::driver('vkontakte')->user();
-            dd($vkuser);
+            $user_id = $vkuser->getId();
+            $idUser = User::where('vk_id', $user_id)->first();
+            if (!$idUser) {
+                $newUser = new User();
+                $newUser->vk_id = $user_id;
+                $newUser->first_name = $vkuser->user['first_name'];
+                $newUser->last_name = $vkuser->user['last_name'];
+                $newUser->email = $vkuser->accessTokenResponseBody['email'];
+                $newUser->access_role = User::DONOR;
+
+                //лажа по получению фотки с большим разрешением
+                $request_params = array(
+                    'user_id' => $user_id,
+                    'fields' => 'photo_200',
+                    'v' => '5.52',
+                    'access_token' => $vkuser->token
+                );
+                $get_params = http_build_query($request_params);
+                $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?'. $get_params));
+                $newUser->avatar = $result->response[0]->photo_200;
+
+                $newUser->save();
+                Auth::login($newUser, true);
+            }else Auth::login($idUser, true);
         }
         return redirect()->home();
     }

@@ -13,7 +13,7 @@ class CreateHospitalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('HospitalsSeeder', function (Blueprint $table) {
+        Schema::create('hospitals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('phone_number', 15);
@@ -33,6 +33,6 @@ class CreateHospitalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('HospitalsSeeder');
+        Schema::dropIfExists('hospitals');
     }
 }
