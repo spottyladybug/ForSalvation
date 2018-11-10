@@ -35,6 +35,11 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        $resolution = Schedule::where([['id_donor', $request->id_donor], ['approval', true]])->first();
+        if ($resolution != null){
+            $prevBooking = Schedule::where('id_donor', $request->id_donor)->first();
+            return response()->json($prevBooking);
+        }
         $schedule = new Schedule();
         $schedule->id_donor = $request->id_donor;
         $schedule->id_hospital = $request->id_hospital;

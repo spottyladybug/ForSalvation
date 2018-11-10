@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donor;
+use App\Models\Hospital;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,5 +92,20 @@ class DonorController extends Controller
     public function destroy(Donor $donor)
     {
         //
+    }
+
+    public function setApproval(Request $request)
+    {
+        $approval = Hospital::where('code', $request->code)->first();
+
+        if ($approval == null){
+            return response()->json('0000');
+        }
+
+        Schedule::where('id', $request->id)->update(['approval' => true]);
+
+        Donor::where('id', $request->id)->update(['last_donation' => date('Y-m-d H:i:s')]);
+
+        return response()->json(true);
     }
 }
