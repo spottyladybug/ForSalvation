@@ -13,17 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('/donor', 'DonorController', [
-    'except' => ['edit', 'show']
-]);
+Route::resource('/donor', 'DonorController');
 
-Route::resource('/hospital', 'HospitalController', [
-    'except' => ['edit', 'show']
-]);
+Route::resource('/hospital', 'HospitalController');
 
-Route::resource('/schedule', 'ScheduleController', [
-    'except' => ['show']
-]);
+Route::resource('/schedule', 'ScheduleController');
+
+Route::resource('/doctor', 'DoctorController');
 
 Route::get('/getSchedule', 'HospitalController@getSchedule');
 

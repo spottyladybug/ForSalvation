@@ -78,6 +78,8 @@ class LoginController extends Controller
                 $donor->id = $newUser->id;
 
             }else Auth::login($idUser, true);
+
+            return redirect()->route('donor.show');
         }
         return redirect()->home();
     }

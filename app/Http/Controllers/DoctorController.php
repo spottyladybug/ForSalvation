@@ -52,7 +52,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        return response(Doctor::with('user')->where('id', $doctor->id)->first());
     }
 
     /**

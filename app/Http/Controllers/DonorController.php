@@ -52,7 +52,7 @@ class DonorController extends Controller
      */
     public function show(Donor $donor)
     {
-        //
+        return response(Donor::with('user')->where('id', $donor->id)->first());
     }
 
     /**
