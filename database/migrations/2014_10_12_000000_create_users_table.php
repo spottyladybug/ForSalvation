@@ -19,10 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('patronymic')->nullable();
-            $table->string('phone_number')->nullable();
             $table->text('avatar');
             $table->string('email')->unique();
-            $table->unsignedInteger('donor_id')->nullable();
+            $table->boolean('donor')->default(false);
             $table->integer('access_role');
             $table->rememberToken();
             $table->timestamps();

@@ -42,6 +42,6 @@ class User extends Authenticatable
 
     public function donor()
     {
-        return $this->belongsTo(Donor::class, 'donor_id');
+        return $this->donor;
     }
 }

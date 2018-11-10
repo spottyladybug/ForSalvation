@@ -12,7 +12,7 @@ class Schedule extends Model
      * @var array
      */
     protected $fillable = [
-        'id_donor', 'id_hospital', 'time', 'free_counts', 'code', 'approval'
+        'id_donor', 'id_hospital', 'time', 'code', 'approval'
     ];
 
     /**

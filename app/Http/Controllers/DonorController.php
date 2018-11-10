@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donor;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\Shell;
 
 class DonorController extends Controller
 {
@@ -15,7 +17,9 @@ class DonorController extends Controller
      */
     public function index()
     {
-        //
+        $donor = Donor::all();
+
+        return response($donor);
     }
 
     /**
@@ -36,17 +40,7 @@ class DonorController extends Controller
      */
     public function store(Request $request)
     {
-        $donor = new Donor();
-        $donor->id = Auth::id();
-        $donor->first_name = $request->name;
-        $donor->last_name = $request->last_name;
-        $donor->patronymic = $request->patronymic;
-        $donor->phone_number = $request->phone_number;
-        $donor->checkup = false;
-        $donor->blood_type = $request->blood_type;
-        $donor->save();
-
-        return response($donor->jsonSerialize(), Response::HTTP_CREATED);
+        //
     }
 
     /**
@@ -80,7 +74,12 @@ class DonorController extends Controller
      */
     public function update(Request $request, Donor $donor)
     {
-        //
+        $donor->phone_number = $request->phone_number;
+        $donor->city = $request->city;
+        $donor->blood_type = ($request->blood_type === null)? $request->blood_type: 0;
+        $donor->save();
+
+        return response()->json(true);
     }
 
     /**

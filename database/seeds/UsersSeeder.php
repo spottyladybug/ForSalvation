@@ -16,7 +16,6 @@ class UsersSeeder extends Seeder
             'first_name' => 'Anna',
             'last_name' => 'Lyalina',
             'patronymic' => 'rewq',
-            'phone_number' => '7438120',
             'avatar' => 'gwpghwep',
             'email' => 'vfeqbwbger',
             'access_role' => App\User::DONOR,
@@ -28,11 +27,10 @@ class UsersSeeder extends Seeder
             'first_name' => 'Anna2',
             'last_name' => 'Lyalina2',
             'patronymic' => 'rewq2',
-            'phone_number' => '7438120',
             'avatar' => 'gwpghwep',
             'email' => 'eqpnbfdwp',
             'access_role' => App\User::DOCTOR,
-            'remember_token' => 'fhieqobvf',
+            'remember_token' => 'fdbfds',
         ]);
 
         \App\Models\Donor::create([

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Donor;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -72,6 +73,10 @@ class LoginController extends Controller
 
                 $newUser->save();
                 Auth::login($newUser, true);
+
+                $donor = new Donor();
+                $donor->id = $newUser->id;
+
             }else Auth::login($idUser, true);
         }
         return redirect()->home();

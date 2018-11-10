@@ -21,22 +21,56 @@ class HospitalsSeeder extends Seeder
             'sunday' => \App\Models\BloodNecessity::NOT_NECESSARY
         ]);
 
-        \App\Models\WorkingSchedule::create([
-            'monday_start' => '9:00',
-            'monday_finish' => '9:00',
-            'tuesday_start' => '9:00',
-            'tuesday_finish' => '9:00',
-            'wednesday_start' => '9:00',
-            'wednesday_finish' => '9:00',
-            'thursday_start' => '9:00',
-            'thursday_finish' => '9:00',
-            'friday_start' => '9:00',
-            'friday_finish' => '9:00',
-            'saturday_start' => '9:00',
-            'saturday_finish' => '9:00',
-            'sunday_start' => '9:00',
-            'sunday_finish' => '9:00',
-        ]);
+        \App\Models\WorkingSchedule::create(
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 1,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 2,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 3,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 4,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 5,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 6,
+                'count' => 10,
+            ],
+            [
+                'id_hospital' => 1,
+                'start' => '9:00',
+                'finish' => '9:00',
+                'day' => 7,
+                'count' => 10,
+            ]);
 
         \App\Models\Hospital::create([
             'name' => 'bonchiklinika',

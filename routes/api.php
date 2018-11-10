@@ -13,10 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('donor')->resource('/donor', 'DoctorController', [
+Route::resource('/donor', 'DonorController', [
     'except' => ['edit', 'show']
 ]);
 
-Route::get('test', 'HospitalController@index');
+Route::resource('/hospital', 'HospitalController', [
+    'except' => ['edit', 'show']
+]);
 
-Route::get('test2', 'HospitalController@schedule');
+Route::resource('/schedule', 'ScheduleController', [
+    'except' => ['show']
+]);
+
+Route::get('/getSchedule', 'HospitalController@getSchedule');

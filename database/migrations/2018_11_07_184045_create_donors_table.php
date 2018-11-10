@@ -15,7 +15,9 @@ class CreateDonorsTable extends Migration
     {
         Schema::create('donors', function (Blueprint $table) {
             $table->integer('id');
-            $table->boolean('checkup');
+            $table->string('phone_number')->nullable();
+            $table->string('city')->nullable();
+            $table->boolean('checkup')->default(false);
             $table->integer('blood_type')->nullable();
             $table->dateTime('last_donation')->nullable();
         });

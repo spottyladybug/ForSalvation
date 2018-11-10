@@ -19,12 +19,16 @@ class Hospital extends Model
         'hospital_time_id', 'blood_necessity_id', 'blood_type_id'
     ];
 
+    protected $times = [
+        'times' => 'array'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function times()
     {
-        return $this->belongsTo(WorkingSchedule::class, 'hospital_time_id');
+        return $this->hasMany(WorkingSchedule::class, 'id_hospital','id');
     }
 
     /**

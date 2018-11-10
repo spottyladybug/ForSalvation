@@ -14,27 +14,11 @@ class CreateWorkingScheduleTable extends Migration
     public function up()
     {
         Schema::create('working_schedule', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('monday_start');
-            $table->string('monday_finish');
-
-            $table->string('tuesday_start');
-            $table->string('tuesday_finish');
-
-            $table->string('wednesday_start');
-            $table->string('wednesday_finish');
-
-            $table->string('thursday_start');
-            $table->string('thursday_finish');
-
-            $table->string('friday_start');
-            $table->string('friday_finish');
-
-            $table->string('saturday_start');
-            $table->string('saturday_finish');
-
-            $table->string('sunday_start');
-            $table->string('sunday_finish');
+            $table->integer('id_hospital');
+            $table->string('start');
+            $table->string('finish');
+            $table->string('day');
+            $table->integer('count');
             $table->timestamps();
         });
     }

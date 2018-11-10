@@ -87,7 +87,7 @@ class HospitalController extends Controller
         //
     }
 
-    public function schedule()
+    public function getSchedule()
     {
         $schedules = Schedule::with(['donor', 'hospital'])->whereDate('time', Carbon::tomorrow())
             ->get();

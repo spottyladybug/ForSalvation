@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class DonorMiddleware
 {
@@ -15,6 +17,12 @@ class DonorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if ($request->route()->named('login', 'home')){
+            return $next($request);
+        }
+        if (Auth::check() && (Auth::user()->donor == 0))
+            return $next($request);
+
+        return redirect()->home();
     }
 }
