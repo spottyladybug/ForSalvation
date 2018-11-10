@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('donor')->resource('/donor', 'DoctorController', [
+    'except' => ['edit', 'show']
+]);
+
+Route::get('test', 'HospitalController@index');
+
+Route::get('test2', 'HospitalController@schedule');

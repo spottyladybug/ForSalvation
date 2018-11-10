@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TimeAppointment;
+use App\Models\BloodType;
 use Illuminate\Http\Request;
 
-class TimeAppointmentController extends Controller
+class BloodTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TimeAppointmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TimeAppointment  $timeAppointment
+     * @param  \App\Models\BloodType  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function show(TimeAppointment $timeAppointment)
+    public function show(BloodType $bloodType)
     {
         //
     }
@@ -52,10 +52,10 @@ class TimeAppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TimeAppointment  $timeAppointment
+     * @param  \App\Models\BloodType  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function edit(TimeAppointment $timeAppointment)
+    public function edit(BloodType $bloodType)
     {
         //
     }
@@ -64,10 +64,10 @@ class TimeAppointmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TimeAppointment  $timeAppointment
+     * @param  \App\Models\BloodType  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TimeAppointment $timeAppointment)
+    public function update(Request $request, BloodType $bloodType)
     {
         //
     }
@@ -75,10 +75,10 @@ class TimeAppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TimeAppointment  $timeAppointment
+     * @param  \App\Models\BloodType  $bloodType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TimeAppointment $timeAppointment)
+    public function destroy(BloodType $bloodType)
     {
         //
     }

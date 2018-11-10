@@ -13,13 +13,16 @@ class CreateHospitalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hospitals', function (Blueprint $table) {
-            $table->integer('id');
+        Schema::create('HospitalsSeeder', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('phone_number');
-            $table->json('location');
-            $table->json('blood_necessity');
-            $table->json('timetable');
+            $table->string('phone_number', 15);
+            $table->decimal('location_x', 10, 7);
+            $table->decimal('location_y', 10, 7);
+            $table->string('code');
+            $table->unsignedInteger('hospital_time_id');
+            $table->unsignedInteger('blood_necessity_id');
+            $table->unsignedInteger('blood_type_id');
         });
     }
 
@@ -30,6 +33,6 @@ class CreateHospitalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospitals');
+        Schema::dropIfExists('HospitalsSeeder');
     }
 }

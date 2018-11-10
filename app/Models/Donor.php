@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Donor extends Model
 {
     public $timestamps = false;
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'first_name', 'last_name', 'patronymic', 'phone_number',
+        'checkup', 'blood_type', 'last_donation'
+    ];
 }

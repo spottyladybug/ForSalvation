@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hospital;
-use App\Models\Schedule;
-use Carbon\Carbon;
+use App\Models\BloodNecessity;
 use Illuminate\Http\Request;
 
-class HospitalController extends Controller
+class BloodNecessityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospitals = Hospital::with(['times', 'bloodTypes'])->get();
-
-        return response($hospitals);
+        //
     }
 
     /**
@@ -45,10 +41,10 @@ class HospitalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hospital  $hospital
+     * @param  \App\Models\BloodNecessity  $bloodNecessity
      * @return \Illuminate\Http\Response
      */
-    public function show(Hospital $hospital)
+    public function show(BloodNecessity $bloodNecessity)
     {
         //
     }
@@ -56,10 +52,10 @@ class HospitalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hospital  $hospital
+     * @param  \App\Models\BloodNecessity  $bloodNecessity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hospital $hospital)
+    public function edit(BloodNecessity $bloodNecessity)
     {
         //
     }
@@ -68,10 +64,10 @@ class HospitalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Hospital  $hospital
+     * @param  \App\Models\BloodNecessity  $bloodNecessity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hospital $hospital)
+    public function update(Request $request, BloodNecessity $bloodNecessity)
     {
         //
     }
@@ -79,19 +75,11 @@ class HospitalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hospital  $hospital
+     * @param  \App\Models\BloodNecessity  $bloodNecessity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hospital $hospital)
+    public function destroy(BloodNecessity $bloodNecessity)
     {
         //
-    }
-
-    public function schedule()
-    {
-        $schedules = Schedule::with(['donor', 'hospital'])->whereDate('time', Carbon::tomorrow())
-            ->get();
-
-        return response($schedules);
     }
 }

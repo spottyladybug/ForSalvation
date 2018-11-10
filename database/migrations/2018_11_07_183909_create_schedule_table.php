@@ -17,6 +17,7 @@ class CreateScheduleTable extends Migration
             $table->integer('id_donor');
             $table->integer('id_hospital');
             $table->dateTime('time');
+            $table->integer('free_counts');
             $table->string('code');
             $table->boolean('approval');
             $table->timestamps();
