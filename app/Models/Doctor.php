@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
@@ -13,6 +14,10 @@ class Doctor extends Model
      */
     protected $fillable = [
         'position', 'login', 'password'
+    ];
+
+    protected $hidden = [
+        'password'
     ];
 
     public function user()

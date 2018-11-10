@@ -17,7 +17,7 @@ class DonorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->route()->named('login', 'home')){
+        if ($request->route()->named('login', 'home', 'callback', 'register')){
             return $next($request);
         }
         if (Auth::check() && (Auth::user()->donor == 0))

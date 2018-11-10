@@ -48,7 +48,7 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        if( request( 'code' ) ) {
+        if( request()->get('code') ) {
             $vkuser = Socialite::driver('vkontakte')->user();
             $user_id = $vkuser->getId();
             $idUser = User::where('vk_id', $user_id)->first();
@@ -77,9 +77,9 @@ class LoginController extends Controller
                 $donor = new Donor();
                 $donor->id = $newUser->id;
 
-            }else Auth::login($idUser, true);
+            } else Auth::login($idUser, true);
 
-            return redirect()->route('donor.show');
+            return redirect()->route('donor.show', $idUser->getQueueableId());
         }
         return redirect()->home();
     }

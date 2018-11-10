@@ -16,6 +16,10 @@ class RegisterController extends Controller
     {
         $user = new User();
         $user->email = $request->email;
+        $user->first_name = 'doctor_' . $user->getQueueableId();
+        $user->last_name = 'cool doc';
+        $user->avatar = 'cool_doc_ava';
+        $user->access_role = User::DOCTOR;
         $user->save();
         \Auth::login($user, true);
 
@@ -23,8 +27,9 @@ class RegisterController extends Controller
         $doctor->id = $user->id;
         $doctor->login = $request->login;
         $doctor->password = \Hash::make($request->password);
+        $doctor->position = 'passive';
         $doctor->save();
 
-        return redirect()->route('doctor.show');
+        return redirect()->route('doctor.show', ['id' => $doctor->id]);
     }
 }
