@@ -16,7 +16,7 @@ class Hospital extends Model
      */
     protected $fillable = [
         'name', 'phone_number', 'location_x', 'location_y', 'code',
-        'hospital_time_id', 'blood_necessity_id', 'blood_type_id'
+        'blood_necessity_id', 'blood_type_id'
     ];
 
     protected $times = [
@@ -28,7 +28,7 @@ class Hospital extends Model
      */
     public function times()
     {
-        return $this->hasMany(WorkingSchedule::class, 'id_hospital','id');
+        return $this->hasMany(WorkingSchedule::class, 'id_hospital', 'id');
     }
 
     /**

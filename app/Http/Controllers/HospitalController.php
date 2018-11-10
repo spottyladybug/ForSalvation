@@ -39,7 +39,17 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hospital = new Hospital();
+        $hospital->name = $request->name;
+        $hospital->phone_number = $request->phone_number;
+        $hospital->location_x = $request->location_x;
+        $hospital->location_y = $request->location_y;
+        $hospital->code = str_random(4);
+        $hospital->blood_necessity_id = $request->blood_necessity_id;
+        $hospital->blood_type_id = $request->blood_type_id;
+        $hospital->save();
+
+        return response()->json(true);
     }
 
     /**

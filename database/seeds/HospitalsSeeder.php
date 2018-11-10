@@ -78,7 +78,6 @@ class HospitalsSeeder extends Seeder
             'location_x' => '60.021852',
             'location_y' => '30.267116',
             'code' => str_random(4),
-            'hospital_time_id' => 1,
             'blood_necessity_id' => 1,
             'blood_type_id' => 1
         ]);

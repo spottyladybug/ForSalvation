@@ -20,7 +20,6 @@ class CreateHospitalsTable extends Migration
             $table->decimal('location_x', 10, 7);
             $table->decimal('location_y', 10, 7);
             $table->string('code');
-            $table->unsignedInteger('hospital_time_id');
             $table->unsignedInteger('blood_necessity_id');
             $table->unsignedInteger('blood_type_id');
         });
