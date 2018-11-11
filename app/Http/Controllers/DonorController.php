@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Donor;
 use App\Models\Hospital;
 use App\Models\Schedule;
+use App\Models\UsersDonateBlood;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Psy\Shell;
@@ -102,9 +103,15 @@ class DonorController extends Controller
             return response()->json('0000');
         }
 
-        Schedule::where('id', $request->id)->update(['approval' => true]);
+        Donor::where('id', $request->id_donor)->update(['last_donation' => date('Y-m-d H:i:s')]);
 
-        Donor::where('id', $request->id)->update(['last_donation' => date('Y-m-d H:i:s')]);
+        $newBlood = new UsersDonateBlood();
+        $newBlood->id_donor = $request->id_donor;
+        $newBlood->all_blood = ($request->all_blood == null)? false: true;
+        $newBlood->plazma= ($request->plazma == null)? false: true;
+        $newBlood->save();
+
+        Schedule::where('id', $request->id)->update([['approval' => true], ['blood_components', $newBlood->id]]);
 
         return response()->json(true);
     }
