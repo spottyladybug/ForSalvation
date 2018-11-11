@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "vue-functional-calendar": "^1.3.0",
         "vue-yandex-maps": "^0.7.15"
     }
 }

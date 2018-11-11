@@ -13990,7 +13990,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
@@ -47428,9 +47428,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(11)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(45)
 /* template */
-var __vue_template__ = __webpack_require__(45)
+var __vue_template__ = __webpack_require__(46)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47470,6 +47470,67 @@ module.exports = Component.exports
 
 /***/ }),
 /* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            hospitals: []
+        };
+    },
+    created: function created() {
+        this.fetchHospital();
+    },
+
+
+    method: {
+        fetchHospital: function fetchHospital() {
+            fetch('api/hospital').then(function (res) {
+                console.log(res);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47552,7 +47613,7 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

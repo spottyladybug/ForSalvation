@@ -31,3 +31,24 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            hospitals: []
+        }
+    },
+
+    created() {
+        this.fetchHospital();
+    },
+
+    method: {
+        fetchHospital() {
+            fetch('api/hospital')
+                .then( res => {console.log( res )} );
+        }
+    }
+}
+</script>
