@@ -21,6 +21,8 @@ Route::resource('/schedule', 'ScheduleController');
 
 Route::resource('/doctor', 'DoctorController');
 
+Route::resource('/bloodNecessity', 'BloodNecessityController');
+
 Route::get('/getSchedule', 'HospitalController@getSchedule');
 
 Route::post('/setApproval', 'DonorController@setApproval');

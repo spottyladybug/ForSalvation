@@ -35,7 +35,17 @@ class BloodNecessityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blNess = new BloodNecessity();
+        $blNess->monday = $request->monday;
+        $blNess->tuesday = $request->tuesday;
+        $blNess->wensday = $request->wensday;
+        $blNess->thursday = $request->thursday;
+        $blNess->friday = $request->friday;
+        $blNess->saturday = $request->saturday;
+        $blNess->sunday = $request->sunday;
+        $blNess->save();
+
+        response()->json(true);
     }
 
     /**
