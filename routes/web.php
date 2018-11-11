@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('/profile', 'ProfileController@index')->name('profile');
 
 // OAuth Routes
-Route::get('login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
-Route::get('callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
+Route::get('/login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
 
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
