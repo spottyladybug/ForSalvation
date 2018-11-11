@@ -16,12 +16,12 @@ class CreateHospitalsTable extends Migration
         Schema::create('hospitals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('phone_number');
-            $table->json('location');
-            //надо добавить расписание приема, а не время начала/конца
-            $table->dateTime('start_time');
-            $table->dateTime('finish_time');
-            $table->json('blood_necessity');
+            $table->string('phone_number', 15);
+            $table->decimal('location_x', 10, 7);
+            $table->decimal('location_y', 10, 7);
+            $table->string('code');
+            $table->unsignedInteger('blood_necessity_id');
+            $table->unsignedInteger('blood_type_id');
         });
     }
 

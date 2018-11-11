@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrialsTable extends Migration
+class CreateBloodTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,15 @@ class CreateTrialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trials', function (Blueprint $table) {
+        Schema::create('blood_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('monday');
+            $table->text('tuesday');
+            $table->text('wednesday');
+            $table->text('thursday');
+            $table->text('friday');
+            $table->text('saturday');
+            $table->text('sunday');
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreateTrialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trials');
+        Schema::dropIfExists('blood_types');
     }
 }

@@ -14,11 +14,12 @@ class CreateScheduleTable extends Migration
     public function up()
     {
         Schema::create('schedule', function (Blueprint $table) {
-            $table->integer('id_donor');
-            $table->integer('id_hospital');
-            $table->dateTime('time');
-            $table->string('code');
-            $table->boolean('approval');
+            $table->increments('id');
+            $table->integer('id_donor')->nullable();
+            $table->integer('id_hospital')->nullable();
+            $table->dateTime('time')->nullable();
+            $table->string('code')->nullable();
+            $table->boolean('approval')->nullable();
             $table->timestamps();
         });
     }

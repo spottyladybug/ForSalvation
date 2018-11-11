@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donor;
+use App\Models\Hospital;
+use App\Models\Schedule;
+use App\Models\UsersDonateBlood;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Psy\Shell;
 
 class DonorController extends Controller
 {
@@ -14,7 +19,9 @@ class DonorController extends Controller
      */
     public function index()
     {
-        //
+        $donor = Donor::all();
+
+        return response($donor);
     }
 
     /**
@@ -46,7 +53,7 @@ class DonorController extends Controller
      */
     public function show(Donor $donor)
     {
-        //
+        return response(Donor::with('user')->where('id', $donor->id)->first());
     }
 
     /**
@@ -69,7 +76,12 @@ class DonorController extends Controller
      */
     public function update(Request $request, Donor $donor)
     {
-        //
+        $donor->phone_number = $request->phone_number;
+        $donor->city = $request->city;
+        $donor->blood_type = ($request->blood_type === null)? $request->blood_type: 0;
+        $donor->save();
+
+        return response()->json(true);
     }
 
     /**
@@ -81,5 +93,33 @@ class DonorController extends Controller
     public function destroy(Donor $donor)
     {
         //
+    }
+
+    public function setApproval(Request $request)
+    {
+        $approval = Hospital::where('code', $request->code)->first();
+
+        if ($approval == null){
+            return response()->json('0000');
+        }
+
+        Donor::where('id', $request->id_donor)->update(['last_donation' => date('Y-m-d H:i:s')]);
+        Donor::where('id', $request->id_donor)->increment('donations', 1);
+        Donor::where('id', $request->id_donor)->increment('all_blood', 1);
+        Donor::where('id', $request->id_donor)->increment('plazma', 1);
+
+        $newBlood = new UsersDonateBlood();
+        $newBlood->id_donor = $request->id_donor;
+        $newBlood->all_blood = $request->all_blood? 1: 0;
+        $newBlood->plazma= $request->plazma? 1: 0;
+        $newBlood->platelets = $request->platelets? 1: 0;
+        $newBlood->er = $request->er? 1: 0;
+        $newBlood->granulocytes = $request->granulocytes? 1: 0;
+        $newBlood->leukocytes = $request->leukocytes? 1: 0;
+        $newBlood->save();
+
+        Schedule::where('id', $request->id)->update(['approval' => true, 'blood_components' => $newBlood->id]);
+
+        return response()->json(true);
     }
 }

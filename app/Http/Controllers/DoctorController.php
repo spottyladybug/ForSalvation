@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Trial;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
-class TrialController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,27 +35,33 @@ class TrialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doctor = new Doctor();
+        $doctor->id = \Auth::id();
+        $doctor->id_hospital = $request->id_hospital;
+        $doctor->position = $request->position;
+        $doctor->save();
+
+        return response($doctor->jsonSerialize(), Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Trial  $trial
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Trial $trial)
+    public function show(Doctor $doctor)
     {
-        //
+        return response(Doctor::with('user')->where('id', $doctor->id)->first());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Trial  $trial
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trial $trial)
+    public function edit(Doctor $doctor)
     {
         //
     }
@@ -64,10 +70,10 @@ class TrialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Trial  $trial
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trial $trial)
+    public function update(Request $request, Doctor $doctor)
     {
         //
     }
@@ -75,10 +81,10 @@ class TrialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Trial  $trial
+     * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trial $trial)
+    public function destroy(Doctor $doctor)
     {
         //
     }

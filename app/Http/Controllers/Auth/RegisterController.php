@@ -2,71 +2,34 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Doctor;
+use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    use AuthenticatesUsers;
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function register (Request $request)
     {
-        $this->middleware('guest');
-    }
+        $user = new User();
+        $user->email = $request->email;
+        $user->first_name = 'doctor_' . $user->getQueueableId();
+        $user->last_name = 'cool doc';
+        $user->avatar = 'cool_doc_ava';
+        $user->access_role = User::DOCTOR;
+        $user->save();
+        \Auth::login($user, true);
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'login' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
+        $doctor = new Doctor();
+        $doctor->id = $user->id;
+        $doctor->login = $request->login;
+        $doctor->password = \Hash::make($request->password);
+        $doctor->position = 'passive';
+        $doctor->save();
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'login' => $data['login'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return redirect()->route('doctor.show', ['id' => $doctor->id]);
     }
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hospital;
+use App\Models\Schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Resources\Hospital as HospitalResource;
 
 class HospitalController extends Controller
 {
@@ -14,7 +17,10 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        // $hospitals = Hospital::with(['times', 'bloodTypes'])->get();
+        $hospitals = Hospital::all();
+
+        return HospitalResource::collection($hospitals);
     }
 
     /**
@@ -35,7 +41,17 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hospital = new Hospital();
+        $hospital->name = $request->name;
+        $hospital->phone_number = $request->phone_number;
+        $hospital->location_x = $request->location_x;
+        $hospital->location_y = $request->location_y;
+        $hospital->code = str_random(4);
+        $hospital->blood_necessity_id = $request->blood_necessity_id;
+        $hospital->blood_type_id = $request->blood_type_id;
+        $hospital->save();
+
+        return response()->json(true);
     }
 
     /**
@@ -81,5 +97,13 @@ class HospitalController extends Controller
     public function destroy(Hospital $hospital)
     {
         //
+    }
+
+    public function getSchedule()
+    {
+        $schedules = Schedule::with(['donor', 'hospital'])->whereDate('time', Carbon::tomorrow())
+            ->get();
+
+        return response($schedules);
     }
 }

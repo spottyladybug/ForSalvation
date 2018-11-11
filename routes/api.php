@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('/donor', 'DonorController');
+
+Route::resource('/hospital', 'HospitalController');
+
+Route::resource('/schedule', 'ScheduleController');
+
+Route::resource('/doctor', 'DoctorController');
+
+Route::resource('/bloodNecessity', 'BloodNecessityController');
+
+Route::resource('/workingSchedule', 'WorkingScheduleController');
+
+Route::get('/getSchedule', 'HospitalController@getSchedule');
+
+Route::post('/setApproval', 'DonorController@setApproval');

@@ -14,14 +14,12 @@ class CreateDonorsTable extends Migration
     public function up()
     {
         Schema::create('donors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('patronymic');
-            $table->string('phone_number');
-            $table->boolean('checkup');
-            $table->integer('blood_type');
-            $table->dateTime('last_donation');
+            $table->integer('id');
+            $table->string('phone_number')->nullable();
+            $table->string('city')->nullable();
+            $table->boolean('checkup')->default(false);
+            $table->integer('blood_type')->nullable();
+            $table->dateTime('last_donation')->nullable();
         });
     }
 

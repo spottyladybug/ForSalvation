@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Yandex\Geocode\YandexGeocodeServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
         /*
          * Application Service Providers...
          */

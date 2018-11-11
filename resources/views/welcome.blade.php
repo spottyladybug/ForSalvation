@@ -1,96 +1,73 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+@section('content')
+<div class="welcome container">
+    <section id="registration" class="row">
+        <div class="col-12">
+            <h1>Запись на сдачу крови</h1>
+            <p>Убедитесь, что на вас не действуют временные ограничения. Врач имеет право отказать вам в сдаче.</p>
+        </div>
+    </section>
+    <form class="row" action="">
+        <div class="col-12 city">
+            <label>Ваш город</label>
+            <div class="city-input">
+                <input type="text"><button type="button">Изменить</button>
             </div>
         </div>
-    </body>
-</html>
+        <div class="col-12 bloods">
+            <h3>Готов сдавать:</h3>
+            <ul class="blood-elements row col-12">
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-blood"></i>
+                        Цельная кровь                        
+                    </div>
+                </li>
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-plazma"></i>
+                        Плазма
+                    </div>
+                </li>
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-platelets"></i>
+                        Тромбоциты
+                    </div>
+                </li>
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-erythrocyte"></i>
+                        Эритроциты
+                    </div>
+                </li>
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-granulocytes"></i>
+                        Гранулоциты
+                    </div>
+                </li>
+                <li class="col-lg-2 col-md-4 col-6">
+                    <div>
+                        <i class="svg-leukocyte"></i>
+                        Лейкоциты
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12 hospital-choose">
+            <h3>Выберите пункт</h3>
+            <div>
+                <input type="text" placeholder="Поиск по названию"><button>Поиск</button>
+            </div>
+        </div>
+        <div class="col-12 map">
+            <ya-map></ya-map>
+        </div>
+        <div class="col-12 calendar">
+            <h3>Запись на сдачу крови в ГКУЗ "Центр крови Ленинградской области", филиал №1</h3>
+        </div>
+    </form>
+</div>
+@endsection

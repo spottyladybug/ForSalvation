@@ -24,7 +24,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,20 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resolution = Schedule::where([['id_donor', $request->id_donor], ['approval', true]])->first();
+        if ($resolution != null){
+            $prevBooking = Schedule::where('id_donor', $request->id_donor)->first();
+            return response()->json($prevBooking);
+        }
+        $schedule = new Schedule();
+        $schedule->id_donor = $request->id_donor;
+        $schedule->id_hospital = $request->id_hospital;
+        $schedule->time = $request->time;
+        $schedule->code = str_random(4);
+        $schedule->approval = true;
+        $schedule->save();
+
+        return response()->json(true);
     }
 
     /**
@@ -57,7 +70,10 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        //
+        $schedule->approval = false;
+        $schedule->save();
+
+        return response()->json(true);
     }
 
     /**
@@ -69,7 +85,14 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        $schedule->id_donor = $request->id_donor;
+        $schedule->id_hospital = $request->id_hospital;
+        $schedule->time = $request->time;
+        $schedule->code = str_random(4);
+        $schedule->approval = false;
+        $schedule->save();
+
+        return response()->json(true);
     }
 
     /**
@@ -80,6 +103,6 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        $schedule->delete();
     }
 }

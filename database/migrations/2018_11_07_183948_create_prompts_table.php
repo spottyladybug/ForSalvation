@@ -17,6 +17,7 @@ class CreatePromptsTable extends Migration
             $table->increments('id');
             $table->string('prompt');
             $table->boolean('general_mailing');
+            $table->string('blood_type');
             $table->timestamps();
             $table->softDeletes();
         });
