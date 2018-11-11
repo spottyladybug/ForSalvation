@@ -36,7 +36,11 @@ class WorkingScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        for ($day = 1; $day <= 7; $day++){
+        if ($request->forAll){
+            $endDay = 182;
+        }else $endDay = 7;
+
+        for ($day = 1; $day <= $endDay; $day++){
             $working_shedule = new WorkingSchedule();
             $working_shedule->id_hospital = $request->id_hospital;
             $working_shedule->start = $request->start;
