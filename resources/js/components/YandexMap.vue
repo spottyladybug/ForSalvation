@@ -36,7 +36,15 @@
 export default {
     data() {
         return {
-            hospitals: []
+            hospitals: [],
+            hospital: {
+                id: '',
+                name: '',
+                location_x: '',
+                location_y: ''
+            },
+            hospital_id: '',
+            edit: false
         }
     },
 
@@ -47,9 +55,9 @@ export default {
     methods: {
         fetchHospital() {
             fetch('api/hospital')
-                .then( res => res.json )
+                .then( res => res.json() )
                 .then( res => {
-                    console.log( res )
+                    console.log( res.data );
                 } );
         }
     }

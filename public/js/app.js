@@ -47512,7 +47512,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            hospitals: []
+            hospitals: [],
+            hospital: {
+                id: '',
+                name: '',
+                location_x: '',
+                location_y: ''
+            },
+            hospital_id: '',
+            edit: false
         };
     },
     created: function created() {
@@ -47523,9 +47531,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         fetchHospital: function fetchHospital() {
             fetch('api/hospital').then(function (res) {
-                return res.json;
+                return res.json();
             }).then(function (res) {
-                console.log(res);
+                console.log(res.data);
             });
         }
     }
