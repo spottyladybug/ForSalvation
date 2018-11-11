@@ -18,4 +18,4 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::get('/login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
 
-Route::post('/register', 'Auth\RegisterController@register')->name('register');
+// Route::post('/register', 'Auth\RegisterController@register')->name('register');

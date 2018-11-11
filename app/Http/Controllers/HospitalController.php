@@ -6,6 +6,7 @@ use App\Models\Hospital;
 use App\Models\Schedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Resources\Hospital as HospitalResource;
 
 class HospitalController extends Controller
 {
@@ -16,9 +17,10 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospitals = Hospital::with(['times', 'bloodTypes'])->get();
+        // $hospitals = Hospital::with(['times', 'bloodTypes'])->get();
+        $hospitals = Hospital::all();
 
-        return response($hospitals);
+        return HospitalResource::collection($hospitals);
     }
 
     /**
