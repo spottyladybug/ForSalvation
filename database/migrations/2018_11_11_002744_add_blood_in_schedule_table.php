@@ -19,7 +19,7 @@ class AddBloodInScheduleTable extends Migration
             $table->boolean('all_blood');
             $table->boolean('plazma');
             $table->boolean('platelets');
-            $table->boolean('	erythrocytes');
+            $table->boolean('er');
             $table->boolean('granulocytes');
             $table->boolean('leukocytes');
         });

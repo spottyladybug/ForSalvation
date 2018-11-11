@@ -113,7 +113,7 @@ class DonorController extends Controller
         $newBlood->all_blood = $request->all_blood? 1: 0;
         $newBlood->plazma= $request->plazma? 1: 0;
         $newBlood->platelets = $request->platelets? 1: 0;
-        $newBlood->erythrocytes = 0;
+        $newBlood->er = $request->er? 1: 0;
         $newBlood->granulocytes = $request->granulocytes? 1: 0;
         $newBlood->leukocytes = $request->leukocytes? 1: 0;
         $newBlood->save();
