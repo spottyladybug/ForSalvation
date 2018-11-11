@@ -38,42 +38,48 @@ class HospitalsSeeder extends Seeder
                 'finish' => '9:00',
                 'day' => 1,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
                 'finish' => '9:00',
                 'day' => 2,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
                 'finish' => '9:00',
                 'day' => 3,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
                 'finish' => '9:00',
                 'day' => 4,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
                 'finish' => '9:00',
                 'day' => 5,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
                 'finish' => '9:00',
                 'day' => 6,
                 'count' => 10,
-            ],
+            ]);
+        \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
                 'start' => '9:00',
