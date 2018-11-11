@@ -1,6 +1,6 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'icons';
 
 // Variables
 @import 'variables';
@@ -8,7 +8,91 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+    font-family: "Roboto", sans-serif;
+}
+
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+h3 {
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.blood-elements {
+    li {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        list-style: none;
+        text-align: center;
+
+        div {
+            padding: 20px 0;
+            box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        i {
+            margin: auto;
+        }
+    }
+}
+
+input[type="text"],
+button {
+    font-size: 0.875em;
+    vertical-align: top;
+}
+
+input[type="text"] {
+    width: 300px;
+    height: 40px;
+    position: relative;
+}
+
+button {
+    padding: 8px 20px;
+    background: $red;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    box-shadow: 4px 4px 20px rgba(204, 46, 50, 0.3);
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        background: darken($red, 20%);
+    }
+}
+
+.city {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    label {
+        font-size: 1.25em;
+        margin-right: 20px;
+    }
+
+    .city-input {
+        display: inline-block;
+        vertical-align: middle;
+
+        @media (max-width: 576px) {
+            display: block;
+        }
+    }
+}
+
+.bloods {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.calendar {
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
