@@ -107,11 +107,11 @@ class DonorController extends Controller
 
         $newBlood = new UsersDonateBlood();
         $newBlood->id_donor = $request->id_donor;
-        $newBlood->all_blood = ($request->all_blood == null)? false: true;
-        $newBlood->plazma= ($request->plazma == null)? false: true;
+        $newBlood->all_blood = $request->all_blood? 1: 0;
+        $newBlood->plazma= $request->plazma? 1: 0;
         $newBlood->save();
 
-        Schedule::where('id', $request->id)->update([['approval' => true], ['blood_components', $newBlood->id]]);
+        Schedule::where('id', $request->id)->update(['approval' => true, 'blood_components' => $newBlood->id]);
 
         return response()->json(true);
     }
