@@ -14,12 +14,15 @@ class CreateWorkingScheduleTable extends Migration
     public function up()
     {
         Schema::create('working_schedule', function (Blueprint $table) {
-            $table->integer('id_hospital');
+            $table->increments('id');
+            $table->unsignedInteger('id_hospital');
             $table->string('start');
             $table->string('finish');
             $table->string('day');
             $table->integer('count');
             $table->timestamps();
+
+            $table->foreign('id_hospital')->references('id')->on('hospitals')->onDelete('cascade');
         });
     }
 

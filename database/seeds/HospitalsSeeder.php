@@ -21,6 +21,16 @@ class HospitalsSeeder extends Seeder
             'sunday' => \App\Models\BloodNecessity::NOT_NECESSARY
         ]);
 
+        \App\Models\Hospital::create([
+            'name' => 'bonchiklinika',
+            'phone_number' => '9271232323',
+            'location_x' => '60.021852',
+            'location_y' => '30.267116',
+            'code' => str_random(4),
+            'blood_necessity_id' => 1,
+            'blood_type_id' => 1
+        ]);
+
         \App\Models\WorkingSchedule::create(
             [
                 'id_hospital' => 1,
@@ -71,15 +81,5 @@ class HospitalsSeeder extends Seeder
                 'day' => 7,
                 'count' => 10,
             ]);
-
-        \App\Models\Hospital::create([
-            'name' => 'bonchiklinika',
-            'phone_number' => '9271232323',
-            'location_x' => '60.021852',
-            'location_y' => '30.267116',
-            'code' => str_random(4),
-            'blood_necessity_id' => 1,
-            'blood_type_id' => 1
-        ]);
     }
 }
