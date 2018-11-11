@@ -105,11 +105,17 @@ class DonorController extends Controller
 
         Donor::where('id', $request->id_donor)->update(['last_donation' => date('Y-m-d H:i:s')]);
         Donor::where('id', $request->id_donor)->increment('donations', 1);
+        Donor::where('id', $request->id_donor)->increment('all_blood', 1);
+        Donor::where('id', $request->id_donor)->increment('plazma', 1);
 
         $newBlood = new UsersDonateBlood();
         $newBlood->id_donor = $request->id_donor;
         $newBlood->all_blood = $request->all_blood? 1: 0;
         $newBlood->plazma= $request->plazma? 1: 0;
+        $newBlood->platelets = $request->platelets? 1: 0;
+        $newBlood->erythrocytes = 0;
+        $newBlood->granulocytes = $request->granulocytes? 1: 0;
+        $newBlood->leukocytes = $request->leukocytes? 1: 0;
         $newBlood->save();
 
         Schedule::where('id', $request->id)->update(['approval' => true, 'blood_components' => $newBlood->id]);

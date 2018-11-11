@@ -14,7 +14,7 @@ class Donor extends Model
      */
     protected $fillable = [
         'first_name', 'last_name', 'patronymic', 'phone_number',
-        'checkup', 'blood_type', 'last_donation'
+        'checkup', 'blood_type', 'last_donation', 'all_blood', 'plazma'
     ];
 
     public function user()

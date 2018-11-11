@@ -18,6 +18,10 @@ class AddBloodInScheduleTable extends Migration
             $table->unsignedInteger('id_donor');
             $table->boolean('all_blood');
             $table->boolean('plazma');
+            $table->boolean('platelets');
+            $table->boolean('	erythrocytes');
+            $table->boolean('granulocytes');
+            $table->boolean('leukocytes');
         });
 
         Schema::table('schedule', function (Blueprint $table){
