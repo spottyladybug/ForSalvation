@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BloodType;
 use App\Models\WorkingSchedule;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,26 @@ class WorkingScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        for ($day = 1; $day <= 7; $day++){
+            $working_shedule = new WorkingSchedule();
+            $working_shedule->id_hospital = $request->id_hospital;
+            $working_shedule->start = $request->start;
+            $working_shedule->finish = $request->finish;
+            $working_shedule->day = $day;
+            $working_shedule->count = $request->count;
+            $working_shedule->save();
+        }
+
+        $blood_types = new BloodType();
+        $blood_types->monday = $request->monday;
+        $blood_types->tuesday = $request->tuesday;
+        $blood_types->wednesday = $request->wednesday;
+        $blood_types->thursday = $request->thursday;
+        $blood_types->friday = $request->friday;
+        $blood_types->saturday = $request->saturday;
+        $blood_types->sunday = $request->sunday;
+
+        return response()->json(true);
     }
 
     /**

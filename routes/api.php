@@ -23,6 +23,8 @@ Route::resource('/doctor', 'DoctorController');
 
 Route::resource('/bloodNecessity', 'BloodNecessityController');
 
+Route::resource('/workingSchedule', 'WorkingScheduleController');
+
 Route::get('/getSchedule', 'HospitalController@getSchedule');
 
 Route::post('/setApproval', 'DonorController@setApproval');
