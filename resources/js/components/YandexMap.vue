@@ -44,10 +44,13 @@ export default {
         this.fetchHospital();
     },
 
-    method: {
+    methods: {
         fetchHospital() {
             fetch('api/hospital')
-                .then( res => {console.log( res )} );
+                .then( res => res.json )
+                .then( res => {
+                    console.log( res )
+                } );
         }
     }
 }

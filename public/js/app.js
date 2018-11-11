@@ -47520,9 +47520,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    method: {
+    methods: {
         fetchHospital: function fetchHospital() {
             fetch('api/hospital').then(function (res) {
+                return res.json;
+            }).then(function (res) {
                 console.log(res);
             });
         }
