@@ -104,6 +104,7 @@ class DonorController extends Controller
         }
 
         Donor::where('id', $request->id_donor)->update(['last_donation' => date('Y-m-d H:i:s')]);
+        Donor::where('id', $request->id_donor)->increment('donations', 1);
 
         $newBlood = new UsersDonateBlood();
         $newBlood->id_donor = $request->id_donor;
