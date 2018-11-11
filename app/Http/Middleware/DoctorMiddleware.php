@@ -16,13 +16,13 @@ class DoctorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->route()->named('login', 'home', 'callback', 'register')){
+        if ($request->route()->named('welcome', 'profile', 'login', 'callback', 'register')){
             return $next($request);
         }
 
         if (Auth::check() && (Auth::user()->donor == 1))
             return $next($request);
 
-        return redirect()->home();
+        // return redirect()->route('profile');
     }
 }

@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/profile';
 
     /**
      * Redirect the user to the Vkontakte authentication page.
@@ -79,9 +79,10 @@ class LoginController extends Controller
 
             } else Auth::login($idUser, true);
 
-            return redirect()->route('donor.show', $idUser->getQueueableId());
+            // return redirect()->route('profile', $idUser->getQueueableId());
+            return redirect()->route('profile');
         }
-        return redirect()->home();
+        return redirect()->route('profile');
     }
 
     /**
