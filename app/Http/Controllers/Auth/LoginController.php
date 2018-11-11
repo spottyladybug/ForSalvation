@@ -80,9 +80,9 @@ class LoginController extends Controller
             } else Auth::login($idUser, true);
 
             // return redirect()->route('profile', $idUser->getQueueableId());
-            return redirect()->route('profile');
+            return redirect()->route('donor.profile');
         }
-        return redirect()->route('profile');
+        return redirect()->route('donor.profile');
     }
 
     /**

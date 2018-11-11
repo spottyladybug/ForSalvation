@@ -16,7 +16,7 @@ class DoctorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->route()->named('welcome', 'profile', 'login', 'callback', 'register')){
+        if ($request->route()->named('welcome', 'doctor', 'login', 'callback', 'register')){
             return $next($request);
         }
 

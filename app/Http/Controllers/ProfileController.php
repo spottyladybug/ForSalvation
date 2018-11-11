@@ -13,7 +13,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -21,9 +21,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function donor()
+    {
+        return view('donor');
+    }
+
+    public function doctor()
     {
         return 'lol';
-        // return view('welcome');
     }
 }

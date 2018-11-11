@@ -12,10 +12,11 @@
 */
 
 Route::get('/', 'HomeController@index')->name('welcome');
-Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/donor', 'ProfileController@donor')->name('donor.profile');
+Route::get('/doc', 'ProfileController@doсtor')->name('doсtor.profile');
 
 // OAuth Routes
-Route::get('/login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
-Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
+// Route::get('/login/vkontakte', 'Auth\LoginController@redirectToProvider')->name('login');
+// Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
 
 // Route::post('/register', 'Auth\RegisterController@register')->name('register');
